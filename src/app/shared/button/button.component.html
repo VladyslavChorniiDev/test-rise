@@ -1,0 +1,6 @@
+<button [disabled]="disabledButton" class="button {{ btnSize }} {{ iconPosition }} {{ btnColor }}"
+  [class.full-width]="isFullWidth" type="button">
+  <mat-icon *ngIf="icon && iconPosition === 'left'" [className]="iconPosition" [svgIcon]="icon"></mat-icon>
+  {{ text }}
+  <mat-icon *ngIf="icon && iconPosition === 'right'" [className]="iconPosition" [svgIcon]="icon"></mat-icon>
+</button>

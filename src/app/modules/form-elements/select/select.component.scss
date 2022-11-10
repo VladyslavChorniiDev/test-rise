@@ -1,0 +1,22 @@
+:host::ng-deep {
+  .mat-select-value-text {
+    font-size: 16px;
+    line-height: 16px;
+    color: var(--darkGray);
+    -webkit-text-fill-color: var(--darkGray);
+  }
+
+  .mat-select-arrow {
+    color: var(--darkGray);
+    -webkit-text-fill-color: var(--darkGray);
+    margin-top: 11px;
+  }
+
+  mat-select {
+    height: 21px;
+  }
+
+  .text-input-container .mat-form-field .mat-form-field-infix {
+    padding: 22px 0 7px 0px !important;
+  }
+}

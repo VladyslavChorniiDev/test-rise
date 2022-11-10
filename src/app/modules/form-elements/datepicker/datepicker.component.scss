@@ -1,0 +1,14 @@
+:host::ng-deep {
+  .mat-datepicker-toggle {
+    color: var(--lightGrayThird);
+    -webkit-text-fill-color: var(--lightGrayThird);
+  }
+
+  .mat-focused,
+  .is-opened {
+    .mat-datepicker-toggle {
+      color: var(--darkGray);
+      -webkit-text-fill-color: var(--darkGray);
+    }
+  }
+}

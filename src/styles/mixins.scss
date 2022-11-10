@@ -1,0 +1,79 @@
+@import 'media-variables';
+
+@mixin flex($direction: row, $align: center, $justify: center) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin defaultButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  transition: all .1s ease-in-out;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+@mixin bigButton {
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 23px;
+  padding: 0 32px;
+  height: 50px;
+
+  @media (max-width: $mediaWidthLG) {
+    flex-direction: column;
+    height: 40px;
+    font-size: 14px;
+  }
+}
+
+@mixin lightGrayButton {
+  background-color: var(--lightGray);
+  color: var(--darkGray);
+  -webkit-text-fill-color: var(--darkGray);
+  border: 1px solid var(--lightGraySecond);
+}
+
+
+@mixin userAvatar($blockSize: 40px, $iconSize: 22px, $withBorder: false, $lgBlockSize: false, $lgIconSize: false) {
+  .profile-picture,
+  .empty-user {
+    display: block;
+    width: $blockSize;
+    height: $blockSize;
+    border-radius: 50%;
+
+    @if $lgBlockSize {
+      @media (max-width: $mediaWidthLG) {
+        width: $lgBlockSize;
+        height: $lgBlockSize;
+      }
+    }
+  }
+
+  .empty-user {
+    @include flex;
+    background-color: var(--grayThird);
+
+    @if $withBorder {
+      border: 1px dashed var(--graySecond);
+    }
+
+    mat-icon {
+      color: var(--graySecond);
+      width: $iconSize;
+      height: $iconSize;
+
+      @if $lgIconSize {
+        @media (max-width: $mediaWidthLG) {
+          width: $lgIconSize;
+          height: $lgIconSize;
+        }
+      }
+    }
+  }
+}

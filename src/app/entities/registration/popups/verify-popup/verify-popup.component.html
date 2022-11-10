@@ -1,0 +1,33 @@
+<div *ngIf="successfullySent" class="notification">
+  <mat-icon class="check" svgIcon="check"></mat-icon>
+  <span>OTP sent successfully</span>
+  <mat-icon (click)="closeNotification()" class="close" svgIcon="close-white"></mat-icon>
+</div>
+<div class="wrapper">
+  <div class="header">
+    <span class="title">One Last Step!</span>
+    <mat-icon svgIcon="close" (click)="close()"></mat-icon>
+  </div>
+  <div class="description">Enter 6 digit one time password (OTP) sent to your mobile number or email address to verify
+    your details.</div>
+  <form>
+    <app-input [mask]="'000000'" [formControl]="code" [isError]="code.invalid && code.dirty" [label]="'OTP'" [isRequired]="true">
+    </app-input>
+    <div class="timer-container">
+      <span *ngIf="time" class="timer">Resend OTP in {{ time * 1000 | date: "mm:ss" }}</span>
+      <ng-container *ngIf="!time">
+        <div (click)="startAgain()" class="resend">
+          <mat-icon svgIcon="again"></mat-icon>
+          <span>Resend OTP</span>
+        </div>
+        <div (click)="startAgain()" class="recieve">
+          <mat-icon svgIcon="phone"></mat-icon>
+          <span>Recieve the OTP on a call</span>
+        </div>
+      </ng-container>
+    </div>
+    <app-button (click)="validate()" [isFullWidth]="true" [btnColor]="btnColor" [btnSize]="btnSize"
+      [text]="'Validate OTP'">
+    </app-button>
+  </form>
+</div>

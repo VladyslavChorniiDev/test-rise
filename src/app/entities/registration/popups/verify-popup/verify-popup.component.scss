@@ -1,0 +1,132 @@
+@import 'mixins';
+@import 'media-variables';
+
+::ng-deep {
+  .profile-creating-popup {
+    .mat-dialog-container {
+      max-width: 636px;
+      width: 100%;
+      background-color: var(--white);
+      padding: 0;
+      border-radius: 0;
+    }
+  }
+}
+
+:host {
+  .wrapper {
+    display: block;
+    padding: 24px 50px 37px;
+
+    @media (max-width: $mediaWidthSM) {
+      padding: 24px 20px 37px;
+    }
+  }
+
+  .notification {
+    @include flex;
+    color: var(--white);
+    background-color: var(--green);
+    height: 60px;
+    width: 100%;
+
+    mat-icon {
+      width: 14px;
+      height: 16px;
+    }
+
+    .check {
+      padding-right: 10px;
+    }
+
+    .close {
+      margin-left: 14px;
+      cursor: pointer;
+    }
+
+    span {
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 27px;
+      color: var(--white);
+      border-right: .5px solid var(--white);
+      padding-right: 15px;
+    }
+  }
+
+  .header {
+    @include flex($justify: flex-end);
+    padding-bottom: 31px;
+
+    @media (max-width: $mediaWidthSM) {
+      padding-bottom: 16px;
+    }
+
+    .title {
+      font-weight: 800;
+      font-size: 20px;
+      line-height: 27px;
+      color: var(--darkGray);
+      margin: 0 auto;
+    }
+
+    mat-icon {
+      width: 17px;
+      height: 17px;
+      cursor: pointer;
+    }
+  }
+
+  .description {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--darkGray);
+    padding: 0 19px 25px;
+    text-align: center;
+
+    @media (max-width: $mediaWidthSM) {
+      padding: 0 0 21px;
+    }
+  }
+
+  form {
+    padding-right: 36px;
+
+    @media (max-width: $mediaWidthSM) {
+      padding-right: 0;
+    }
+
+    .timer-container {
+      @include flex($justify: space-between);
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 18px;
+      padding-bottom: 30px;
+
+      .timer {
+        color: var(--darkGray);
+      }
+
+      div {
+        @include flex;
+        cursor: pointer;
+        color: var(--redSecond);
+
+        mat-icon {
+          width: 14px;
+          height: 14px;
+          padding-right: 4px;
+          margin-top: -2px;
+        }
+      }
+    }
+
+    ::ng-deep {
+      .mat-form-field-wrapper {
+        height: 50px;
+        box-sizing: border-box;
+      }
+    }
+  }
+}

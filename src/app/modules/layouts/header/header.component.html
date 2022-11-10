@@ -1,0 +1,72 @@
+<div class="header">
+  <div class="header-logo">
+    <mat-icon svgIcon="logo" class="logo"></mat-icon>
+  </div>
+
+  <div class="header-menu">
+    <ng-container *ngTemplateOutlet="menu"></ng-container>
+  </div>
+
+  <div class="header-menu-mobile">
+    <mat-icon svgIcon="hamburger-menu" (click)="toggleMobileMenu()"></mat-icon>
+  </div>
+
+  <div class="header-menu right-menu" *ngIf="isShowMobileMenu">
+    <mat-icon class="close-btn" svgIcon="close" *ngIf="isShowMobileMenu" (click)="toggleMobileMenu()"></mat-icon>
+    <ng-container *ngTemplateOutlet="menu"></ng-container>
+  </div>
+</div>
+
+<ng-template #menu>
+  <ul class="menu-link">
+    <li>About Us</li>
+    <li>Pricing</li>
+  </ul>
+
+  <div class="user-info" *ngIf="(user$ | async) as user; else loginBtn">
+    <div class="user">
+      <div *ngIf="!user.userPhoto" class="empty-user">
+        <mat-icon svgIcon="empty-user"></mat-icon>
+      </div>
+      <img *ngIf="user.userPhoto" [src]="user.userPhoto" class="profile-picture" alt="user-avatar">
+      <span class="user-name">{{ user.userName | userName }}</span>
+      <mat-icon *ngIf="!isShowMobileMenu" class="menu-icon" [svgIcon]="'arrow-down'" [matMenuTriggerFor]="menu">
+      </mat-icon>
+    </div>
+
+    <mat-menu #menu="matMenu" xPosition="before" class="desktop-menu">
+      <ng-container *ngTemplateOutlet="navigateBtn"></ng-container>
+    </mat-menu>
+
+    <div class="navigate-btn" *ngIf="isShowMobileMenu">
+      <ng-container *ngTemplateOutlet="navigateBtn"></ng-container>
+    </div>
+  </div>
+
+  <div class="header-search">
+    <mat-icon svgIcon="search" class="search-icon"></mat-icon>
+  </div>
+</ng-template>
+
+<ng-template #navigateBtn>
+  <button mat-menu-item [routerLink]="['/profile']">
+    Profile
+  </button>
+  <button mat-menu-item [routerLink]="['/profile/edit']">
+    Edit profile
+  </button>
+  <button mat-menu-item (click)="onLogout()">
+    Logout
+  </button>
+</ng-template>
+
+<ng-template #loginBtn>
+  <ul class="menu-button">
+    <li>
+      <app-button [text]="'Sign In'" [btnSize]="btnSize" [btnColor]="btnColor"></app-button>
+    </li>
+    <li>
+      <app-button [text]="'Registration'" [btnSize]="btnSize" [btnColor]="btnColor"></app-button>
+    </li>
+  </ul>
+</ng-template>

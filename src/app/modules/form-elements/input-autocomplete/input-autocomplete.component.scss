@@ -1,0 +1,9 @@
+:host::ng-deep {
+  .mat-form-field-suffix {
+    mat-icon {
+      width: 20px;
+      margin-right: 7px;
+      color: var(--darkGray);
+    }
+  }
+}
